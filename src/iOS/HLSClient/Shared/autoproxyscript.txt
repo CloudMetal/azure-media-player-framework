@@ -1,0 +1,552 @@
+//Copyright (c) 1997-2006 Microsoft Corporation
+BackupRoute="DIRECT";
+UseDirectForLocal=true;
+ConvertUrlToLowerCase=false;
+function MakeIPs(){
+this[0]= new IpSubnet("127.0.0.0", "255.0.0.0", "127.0.0.0/8");
+this[1]= new IpSubnet("10.0.0.0", "255.0.0.0", "10.0.0.0/8");
+this[2]= new IpSubnet("138.20.0.0", "255.255.0.0", "138.20.0.0/16");
+this[3]= new IpSubnet("157.54.0.0", "255.255.0.0", "157.54.0.0/16");
+this[4]= new IpSubnet("157.55.157.128", "255.255.255.128", "157.55.157.128/25");
+this[5]= new IpSubnet("157.55.49.0", "255.255.255.128", "157.55.49.0/25");
+this[6]= new IpSubnet("157.55.59.128", "255.255.255.128", "157.55.59.128/25");
+this[7]= new IpSubnet("157.55.61.0", "255.255.255.0", "157.55.61.0/24");
+this[8]= new IpSubnet("157.56.24.0", "255.255.255.128", "157.56.24.0/25");
+this[9]= new IpSubnet("157.57.0.0", "255.255.0.0", "157.57.0.0/16");
+this[10]= new IpSubnet("157.59.0.0", "255.255.0.0", "157.59.0.0/16");
+this[11]= new IpSubnet("157.60.0.0", "255.254.0.0", "157.60.0.0/15");
+this[12]= new IpSubnet("161.144.0.0", "255.255.0.0", "161.144.0.0/16");
+this[13]= new IpSubnet("169.254.0.0", "255.255.0.0", "169.254.0.0/16");
+this[14]= new IpSubnet("172.16.0.0", "255.240.0.0", "172.16.0.0/12");
+this[15]= new IpSubnet("192.168.0.0", "255.255.0.0", "192.168.0.0/16");
+this[16]= new IpSubnet("194.121.42.0", "255.255.255.0", "194.121.42.0/24");
+this[17]= new IpSubnet("195.90.91.208", "255.255.255.240", "195.90.91.208/28");
+this[18]= new IpSubnet("195.90.91.240", "255.255.255.240", "195.90.91.240/28");
+this[19]= new IpSubnet("195.90.94.0", "255.255.255.224", "195.90.94.0/27");
+this[20]= new IpSubnet("198.137.97.0", "255.255.255.0", "198.137.97.0/24");
+this[21]= new IpSubnet("199.242.7.0", "255.255.255.0", "199.242.7.0/24");
+this[22]= new IpSubnet("199.89.110.0", "255.255.255.0", "199.89.110.0/24");
+this[23]= new IpSubnet("204.118.158.0", "255.255.255.0", "204.118.158.0/24");
+this[24]= new IpSubnet("204.231.15.0", "255.255.255.0", "204.231.15.0/24");
+this[25]= new IpSubnet("204.231.192.0", "255.255.255.0", "204.231.192.0/24");
+this[26]= new IpSubnet("204.231.195.0", "255.255.255.0", "204.231.195.0/24");
+this[27]= new IpSubnet("204.231.196.0", "255.255.252.0", "204.231.196.0/22");
+this[28]= new IpSubnet("204.231.200.0", "255.255.248.0", "204.231.200.0/21");
+this[29]= new IpSubnet("204.231.208.0", "255.255.240.0", "204.231.208.0/20");
+this[30]= new IpSubnet("204.231.230.0", "255.255.255.0", "204.231.230.0/24");
+this[31]= new IpSubnet("204.231.228.0", "255.255.254.0", "204.231.228.0/23");
+this[32]= new IpSubnet("204.231.232.0", "255.255.255.0", "204.231.232.0/24");
+this[33]= new IpSubnet("204.231.234.0", "255.255.255.0", "204.231.234.0/24");
+this[34]= new IpSubnet("204.231.236.0", "255.255.255.0", "204.231.236.0/24");
+this[35]= new IpSubnet("204.231.255.0", "255.255.255.0", "204.231.255.0/24");
+this[36]= new IpSubnet("204.231.58.0", "255.255.255.0", "204.231.58.0/24");
+this[37]= new IpSubnet("204.231.60.0", "255.255.252.0", "204.231.60.0/22");
+this[38]= new IpSubnet("204.231.76.0", "255.255.255.0", "204.231.76.0/24");
+this[39]= new IpSubnet("204.231.80.0", "255.255.252.0", "204.231.80.0/22");
+this[40]= new IpSubnet("205.163.148.128", "255.255.255.128", "205.163.148.128/25");
+this[41]= new IpSubnet("205.248.10.0", "255.255.254.0", "205.248.10.0/23");
+this[42]= new IpSubnet("205.248.12.0", "255.255.252.0", "205.248.12.0/22");
+this[43]= new IpSubnet("205.248.128.0", "255.255.254.0", "205.248.128.0/23");
+this[44]= new IpSubnet("205.248.163.0", "255.255.255.0", "205.248.163.0/24");
+this[45]= new IpSubnet("205.248.212.0", "255.255.252.0", "205.248.212.0/22");
+this[46]= new IpSubnet("205.248.228.0", "255.255.255.0", "205.248.228.0/24");
+this[47]= new IpSubnet("205.248.235.0", "255.255.255.0", "205.248.235.0/24");
+this[48]= new IpSubnet("205.248.243.0", "255.255.255.0", "205.248.243.0/24");
+this[49]= new IpSubnet("205.248.244.0", "255.255.255.0", "205.248.244.0/24");
+this[50]= new IpSubnet("205.248.41.0", "255.255.255.0", "205.248.41.0/24");
+this[51]= new IpSubnet("205.248.42.0", "255.255.254.0", "205.248.42.0/23");
+this[52]= new IpSubnet("205.248.50.0", "255.255.254.0", "205.248.50.0/23");
+this[53]= new IpSubnet("205.248.61.0", "255.255.255.0", "205.248.61.0/24");
+this[54]= new IpSubnet("205.248.62.0", "255.255.254.0", "205.248.62.0/23");
+this[55]= new IpSubnet("205.248.72.0", "255.255.255.0", "205.248.72.0/24");
+this[56]= new IpSubnet("205.248.74.0", "255.255.255.0", "205.248.74.0/24");
+this[57]= new IpSubnet("205.248.80.0", "255.255.240.0", "205.248.80.0/20");
+this[58]= new IpSubnet("207.46.198.0", "255.255.255.128", "207.46.198.0/25");
+this[59]= new IpSubnet("207.46.4.128", "255.255.255.128", "207.46.4.128/25");
+this[60]= new IpSubnet("207.55.198.0", "255.255.255.128", "207.55.198.0/25");
+this[61]= new IpSubnet("207.55.61.128", "255.255.255.192", "207.55.61.128/26");
+this[62]= new IpSubnet("209.240.210.0", "255.255.255.0", "209.240.210.0/24");
+this[63]= new IpSubnet("3.4.0.0", "255.255.0.0", "3.4.0.0/16");
+this[64]= new IpSubnet("39.0.0.0", "255.0.0.0", "39.0.0.0/8");
+this[65]= new IpSubnet("65.53.0.0", "255.255.0.0", "65.53.0.0/16");
+this[66]= new IpSubnet("65.54.62.0", "255.255.255.128", "65.54.62.0/25");
+this[67]= new IpSubnet("65.55.113.64", "255.255.255.192", "65.55.113.64/26");
+this[68]= new IpSubnet("65.55.126.0", "255.255.255.128", "65.55.126.0/25");
+this[69]= new IpSubnet("65.55.174.0", "255.255.255.128", "65.55.174.0/25");
+this[70]= new IpSubnet("65.55.181.128", "255.255.255.128", "65.55.181.128/25");
+this[71]= new IpSubnet("65.55.78.128", "255.255.255.128", "65.55.78.128/25");
+this[72]= new IpSubnet("65.55.94.0", "255.255.255.128", "65.55.94.0/25");
+}
+DirectIPs=new MakeIPs();
+cDirectIPs=73;
+function MakeCARPExceptions(){
+this[0]="*.windowsupdate.com";
+this[1]="windowsupdate.microsoft.com";
+this[2]="*.windowsupdate.microsoft.com";
+this[3]="*.update.microsoft.com";
+this[4]="download.windowsupdate.com";
+this[5]="download.microsoft.com";
+this[6]="*.download.windowsupdate.com";
+this[7]="wustat.windows.com";
+this[8]="ntservicepack.microsoft.com";
+this[9]="beta.update.microsoft.com";
+this[10]="forefrontdl.microsoft.com";
+this[11]="crl.microsoft.com";
+this[12]="*.ca.com";
+this[13]="search.msn.com";
+this[14]="*.search.msn.com";
+this[15]="pubv6winse";
+this[16]="*.go.com";
+this[17]="*.live.com";
+this[18]="compasscatering.com";
+this[19]="*.compasscatering.com";
+this[20]="usfoods.com";
+this[21]="*.google.com";
+this[22]="exchange.microsoft.com";
+this[23]="pioneer.exchange.microsoft.com";
+this[24]="*.exchange.microsoft.com";
+this[25]="*.windowsvista.com";
+this[26]="*.public.microsoft.com";
+this[27]="*.2mdn.net";
+this[28]="*.adobe.com";
+this[29]="*.advertising.com";
+this[30]="*.atdmt.com";
+this[31]="*.groove.net";
+this[32]="*.hotmail.com";
+this[33]="*.livemeeting.com";
+this[34]="*.microsoft.com";
+this[35]="*.microsoftupdate.microsoft.com";
+this[36]="*.msads.net";
+this[37]="*.msn.com";
+this[38]="*.placeware.com";
+this[39]="*.usfoods.com";
+this[40]="*.windowsupdate.com";
+this[41]="*.windowsupdate.microsoft.com";
+this[42]="*.bradesco.com.br ";
+this[43]="bradesco.com.br";
+this[44]="*.ticketmaster.com";
+this[45]="*.bankofamerica.com";
+this[46]="tkexhrmwb01.partners.extranet.microsoft.com";
+this[47]="expo.svceng.com";
+this[48]="expo2.svceng.com";
+this[49]="*.mesh.com";
+this[50]="*.verisign.com";
+this[51]="*.feedburner.com";
+this[52]="*.questionmarket.com";
+this[53]="*.virtualearth.net";
+this[54]="*.yimg.com";
+this[55]="*.live.net";
+this[56]="*.nbcolympics.com";
+this[57]="*.onten.net";
+this[58]="*.w3.org";
+this[59]="*.etrustdownloads.ca.com";
+this[60]="images.wsdot.wa.gov";
+this[61]="*.portal.cosmos02-prod-co1.search.live.net";
+this[62]="*.msdn.com";
+this[63]="*.apple.com";
+this[64]="*.eyewonder.com";
+this[65]="msnbc.vo.llnwd.net";
+this[66]="forefrontdl.microsoft.com";
+this[67]="*.careerbuilder.com";
+this[68]="*.facebook.com";
+this[69]="*.msnbc.com";
+this[70]="*.pic2009.org";
+this[71]="pic2009.org";
+this[72]="*.cnn.com";
+this[73]="*.c-span.org";
+this[74]="abcnews.*";
+this[75]="*.cbsnews.com";
+this[76]="*.foxnews.com";
+this[77]="*.nytimes.com";
+this[78]="*.foxsports.com";
+this[79]="*.capresearch.org";
+this[80]="*.kumo.com";
+this[81]="*.bu.edu";
+this[82]="microsoft.com";
+this[83]="*.live-func.net";
+this[84]="*.bing.com";
+this[85]="*.cosmos.live.net";
+this[86]="*.mesh-dl.com";
+this[87]="*.getpivot.com";
+this[88]="*.espn.go.com";
+this[89]="soccernet.espn.*";
+this[90]="soccernet.espn.go.com";
+this[91]="office.microsoft.com";
+this[92]="*.razorfish.com";
+this[93]="*.dell.com";
+this[94]="*.passport.com";
+this[95]="*.globo.com";
+this[96]="files.ch9.ms/*";
+this[97]="cosmos04.osdinfra.net";
+this[98]="coprod2.cosmos.live.net";
+this[99]="*.live-int.com";
+this[100]="windows.azure.com";
+this[101]="login.live-int.com";
+this[102]="join.microsoft.com";
+this[103]="*.outlook.com";
+}
+CARPExceptions=new MakeCARPExceptions();
+cCARPExceptions=104;
+function MakeNames(){
+this[0]="*.svceng.com";
+this[1]="exchange.microsoft.com";
+this[2]="*.dev.hotmail-int.com";
+this[3]="*.phx.gbl";
+this[4]="*.dev.hotmail-int.msn-int.com";
+this[5]="*.secretstore.core.windows.net";
+this[6]="pioneer.exchange.microsoft.com";
+this[7]="*.mail.microsoft.com";
+this[8]="lyncdiscoverinternal.microsoft.com";
+this[9]="mail.winse.microsoft.com";
+this[10]="*.myopwv.com";
+this[11]="*.001d.mgd.msft.net";
+this[12]="*.mfx.gme.gbl";
+this[13]="*.test.microsoft.com";
+this[14]="*.dev.storage.live-int.com";
+this[15]="*.mgmt.msft.net";
+this[16]="dev.docs.live-tst.net";
+this[17]="rms.msnbc.com";
+this[18]="*.sw.atlasdmt.com";
+this[19]="spa.mail.microsoft.com";
+this[20]="3di-tfe02.ve.live-int.com";
+this[21]="*.thrash.webtv.net";
+this[22]="*.public.microsoft.com";
+this[23]="*.msg.glbdns.microsoft.com";
+this[24]="*.groove.net";
+this[25]="*.dev.docs.live-tst.net";
+this[26]="outlook.com";
+this[27]="lt1.studiosevent.com";
+this[28]="autodiscover.windows.microsoft.com";
+this[29]="reports.css.msn-int.com";
+this[30]="*.ntdev.microsoft.com";
+this[31]="docs-dev.live-tst.net";
+this[32]="*.gtm.microsoft.com";
+this[33]="owa.microsoft.com";
+this[34]="acluster.moonport.net";
+this[35]="dev.storage.msn-int.com";
+this[36]="internalgroove.net";
+this[37]="beta.mail.windows.microsoft.com";
+this[38]="*.bigpark.local";
+this[39]="dev.pvt-storage.msn-int.com";
+this[40]="autodiscover.winse.microsoft.com";
+this[41]="mail.microsoft.com";
+this[42]="*.dev.calendar.live-int.com";
+this[43]="*.dev.policies.live-int.net";
+this[44]="*.dev.hotmail-int.passport-int.com";
+this[45]="_sip._tls.microsoft.com";
+this[46]="*.cwa.microsoft.com";
+this[47]="*.virt1.dev";
+this[48]="o365filtering-int.com";
+this[49]="*.groove.microsoft.com";
+this[50]="*.owa.microsoft.com";
+this[51]="cdnassets.microsoftpdc.com";
+this[52]="*.mwprod.local";
+this[53]="*.dog.zune.net";
+this[54]="*.dev.hmtest.moonport.com";
+this[55]="*.dev.sybari.com";
+this[56]="*.ms-gms.microsoft.com";
+this[57]="*.mgd.microsoft.com";
+this[58]="monitoring.microsoftonline-p.com";
+this[59]="*.resource.mesg.local";
+this[60]="meetdf.microsoft.com";
+this[61]="ms-gms.microsoft.com";
+this[62]="*.partners.extranet.microsoft.com";
+this[63]="*.swpn.atlasdmt.com";
+this[64]="docaccess.pioneer.exchange.microsoft.com";
+this[65]="*.ad.fast.no";
+this[66]="activities.grooveqa";
+this[67]="*.dev.pvt-storage.msn-int.com";
+this[68]="*.pt2.atlassolutions.com";
+this[69]="*.spgrid.com";
+this[70]="*.outlook.com";
+this[71]="*.needham.local";
+this[72]="*.microsoftonline-p-tst.com";
+this[73]="*.off";
+this[74]="academymobile.microsoft.com";
+this[75]="*.mfxeng.gme.gbl";
+this[76]="*.pnt2.atlasdmt.com";
+this[77]="*.tv2sol.corp";
+this[78]="*.sentillioninc.net";
+this[79]="6to4.ipv6.microsoft.com";
+this[80]="*.prod.avenuea.com";
+this[81]="*.swpn.atlassolutions.com";
+this[82]="*.dev.settings.live-int.net";
+this[83]="*.dev.pvt-storage.live-int.com";
+this[84]="*.dev.atlas";
+this[85]="*.passport-tst.net";
+this[86]="*.microsoftonline-p-int.net";
+this[87]="docaccess.exchange.microsoft.com";
+this[88]="*.dev.storage.msn-int.com";
+this[89]="*.pn.avenuea.com";
+this[90]="sms-fsp-ibcm.microsoft.com";
+this[91]="*.danger.com";
+this[92]="*.dns.microsoft.com";
+this[93]="*.tellme.com";
+this[94]="*.interactive.msnbc.com";
+this[95]="oab.exchange.microsoft.com";
+this[96]="bcluster.moonport.net";
+this[97]="*.microsoftonline.com";
+this[98]="*.main.corp";
+this[99]="aps.mail.microsoft.com";
+this[100]="*.hosting.microsoft.com";
+this[101]="reports.css.msn-ppe.com";
+this[102]="_sip._udp.microsoft.com";
+this[103]="*.xn.corp";
+this[104]="*.virt2.dev";
+this[105]="*.msn-tst.com";
+this[106]="dev.settings.live-int.net";
+this[107]="*.desktoponline.msft.net";
+this[108]="*.microsoftonline-p.com";
+this[109]="*.exchangedogfood.com";
+this[110]="*.stbtest.microsoft.com";
+this[111]="*.swpn.adclub.net";
+this[112]="*.bluesky.local";
+this[113]="*.extest.microsoft.com";
+this[114]="beta.mail.microsoft.com";
+this[115]="*.mdm.microsoft.com";
+this[116]="pnrp.ipv6.microsoft.com";
+this[117]="*.svc.webtv.net";
+this[118]="*.ad.microsoft.com";
+this[119]="im.microsoft.com";
+this[120]="*.livefilestore-dev.com";
+this[121]="df-cas.exchange.microsoft.com";
+this[122]="olm.microsoft.com";
+this[123]="*.hamletinc.com";
+this[124]="*.mstest-int.com";
+this[125]="*.pt.atlassolutions.com";
+this[126]="*.cs.webtv.net";
+this[127]="*.passport-tst.com";
+this[128]="*.sts.microsoft.com";
+this[129]="*.exchange.microsoft.com";
+this[130]="*.test.zune.net";
+this[131]="*.microsoftonline-p-int.com";
+this[132]="autodiscover.service.microsoft.com";
+this[133]="*.ai.eds.com";
+this[134]="dev.policies.live-int.net";
+this[135]="*.multimap.local";
+this[136]="autodiscover-s.outlook.com";
+this[137]="navigate.navision.org";
+this[138]="autodiscover.exchange.microsoft.com";
+this[139]="*.microsoftonline-m-tst.com";
+this[140]="dev.pvt-storage.live-int.com";
+this[141]="imdf.microsoft.com";
+this[142]="mail.managed.microsoft.com";
+this[143]="*.dev.mail.start-int.com";
+this[144]="*.net.sybari.com";
+this[145]="*.chi.parlano.com";
+this[146]="*.microsoftonline-tst.com";
+this[147]="spsites.microsoft.com";
+this[148]="mail.windows.microsoft.com";
+this[149]="ntdevrights.microsoft.com";
+this[150]="player2.pdctest.com";
+this[151]="*.zlab.net";
+this[152]="*.pt.avenuea.com";
+this[153]="*.dev1.devad.dev";
+this[154]="*.domains-dev.live-int.com";
+this[155]="_sip._tcp.microsoft.com";
+this[156]="*.docs-dev.live-tst.net";
+this[157]="mstest-int.com";
+this[158]="*.dns.corp.microsoft.com";
+this[159]="winserights.microsoft.com";
+this[160]="*.corp.microsoft.com";
+this[161]="autodiscover.microsoft.com";
+this[162]="windeployrights.microsoft.com";
+this[163]="cwa.microsoft.com";
+this[164]="*.live-tst.com";
+this[165]="reports.css.msn.com";
+this[166]="*.red.blackrock.com";
+this[167]="corprights.microsoft.com";
+this[168]="cpbg.bluesky.local";
+this[169]="*.p3.corp";
+this[170]="svceng.com";
+this[171]="*.microsoftonline-int.com";
+this[172]="*.nttest.microsoft.com";
+this[173]="*.meet.microsoft.com";
+this[174]="*.carillon.local";
+this[175]="*.activities.grooveqa";
+this[176]="dev.storage.live-int.com";
+this[177]="emea.mail.microsoft.com";
+this[178]="*.dev.mail.live-int.com";
+this[179]="dialdf.microsoft.com";
+this[180]="*.dev.gsa.lab";
+this[181]="owa.windows.microsoft.com";
+this[182]="*.intramusiwave.com";
+this[183]="debug.exchange.microsoft.com";
+this[184]="*.parttest.extranettest.microsoft.com";
+this[185]="*.internalgroove.net";
+this[186]="anz.mail.microsoft.com";
+this[187]="*.microsoftonline-p-tst.net";
+this[188]="exchangedogfood.com";
+}
+DirectNames=new MakeNames();
+cDirectNames=189;
+HttpPort="80";
+cNodes=4;
+function MakeProxies(){
+this[0]=new Node("157.54.119.67",2544688560,1.000000);
+this[1]=new Node("157.54.27.30",2190009623,1.000000);
+this[2]=new Node("157.54.108.7",2291453460,1.000000);
+this[3]=new Node("157.54.86.44",3106552449,1.000000);
+}
+Proxies = new MakeProxies();
+function Node(name, hash, load){
+ this.name = name;
+ this.hash = hash;
+ this.load = load;
+ this.score = 0;
+ return this;
+}
+function IpSubnet(ip, mask, prefix){
+ this.ip = ip;
+ this.mask = mask;
+ this.prefix = prefix;
+ var isIpV4Addr = /^(\d+.){3}\d+$/;
+ this.isIpv6 = !isIpV4Addr.test(ip);
+ return this;
+}
+var pfDnsResolve, pfMyIpAddress, pfIsInNet;
+function DnsResolve(name){
+ return dnsResolve(name);
+}
+function DnsResolveEx(name){
+ return dnsResolveEx(name);
+}
+function IsInNet(ip, subnet){
+ var isIpV4Addr = /^(\d+.){3}\d+$/;
+ if(subnet.isIpv6 || !isIpV4Addr.test(ip)){
+  return false;
+ }
+ return isInNet(ip, subnet.ip, subnet.mask);
+}
+function IsInNetEx(ip, subnet) {
+ var isIpV4Addr = /^(\d+.){3}\d+$/;
+ if(subnet.isIpv6 || !isIpV4Addr.test(ip)){
+  return false;
+ }
+ return isInNetEx(ip, subnet.prefix);
+}
+function MyIpAddress(){
+ return myIpAddress();
+}
+function MyIpAddressEx(){
+ return myIpAddressEx();
+}
+function ExpMatch(str, exp){
+ if (ConvertUrlToLowerCase)
+ {
+  str = str.toLowerCase();
+ }
+ return shExpMatch(str, exp);
+}
+function FindProxyForURL(url, host){
+ pfDnsResolve = DnsResolve;
+ pfMyIpAddress = MyIpAddress;
+ pfIsInNet = IsInNet;
+ return ImplementFindProxyForURL(url, host);
+}
+function FindProxyForURLEx(url, host){
+ pfDnsResolve = DnsResolveEx;
+ pfMyIpAddress = MyIpAddressEx;
+ pfIsInNet = IsInNetEx;
+ return ImplementFindProxyForURL(url, host);
+}
+function ImplementFindProxyForURL(url, host){
+ var hash=0, urllower, i, fIp=false, ip, iparray, nocarp=false, skiphost=false;
+ var list="", pl, j, score, ibest, bestscore;
+ urllower = url.toLowerCase();
+ if((urllower.substring(0,5)=="rtsp:") ||
+   (urllower.substring(0,6)=="rtspt:") ||
+   (urllower.substring(0,6)=="rtspu:") ||
+   (urllower.substring(0,4)=="mms:") ||
+   (urllower.substring(0,5)=="mmst:") ||
+   (urllower.substring(0,5)=="mmsu:"))
+  return "DIRECT";
+ if(UseDirectForLocal){
+  if(isPlainHostName(host))
+   fIp = true;}
+ for(i=0; i<cDirectNames; i++){
+  if(ExpMatch(host, DirectNames[i])){
+   fIp = true;
+   break;}
+  if(ExpMatch(url, DirectNames[i]))
+   return "DIRECT";
+ }
+ if(cDirectIPs == 0){
+  if(fIp)
+   return "DIRECT";}
+ else{
+  ip = host;
+  if(fIp)
+   ip = pfDnsResolve(host);
+  iparray = ip.split(";");
+  for(j=0; j<iparray.length; j++){
+   if(IsIPv6Addr(iparray[j]))
+    return "DIRECT";
+   for(i=0; i<cDirectIPs; i++){
+    if(pfIsInNet(iparray[j], DirectIPs[i]))
+     return "DIRECT";}}
+  if(isPlainHostName(host))
+   return "DIRECT";
+ }
+ if(cCARPExceptions > 0){
+  for(i = 0; i < cCARPExceptions; i++){
+   if(ExpMatch(host, CARPExceptions[i])){
+    nocarp = true;}
+   if(ExpMatch(url, CARPExceptions[i])){
+    nocarp = true;
+    skiphost = true;
+    break;
+ }}}
+ if(!skiphost)
+  hash = HashString(host,hash);
+ if(nocarp)
+  hash = HashString(pfMyIpAddress(), hash);
+ pl = new Array();
+ for(i = 0; i<cNodes; i++){
+  Proxies[i].score = Proxies[i].load * Scramble(hash ^ Proxies[i].hash);
+  pl[i] = i;
+ }
+ for(j = 0; j < cNodes; j++){
+  bestscore = -1;
+  for(i = 0; i < cNodes-j; i++){
+   score = Proxies[pl[i]].score;
+   if(score > bestscore){
+    bestscore = score;
+    ibest = i;
+  }}
+  list = list + "PROXY " + Proxies[pl[ibest]].name + ":" + HttpPort + "; ";
+  pl[ibest] = pl[cNodes-j-1];
+ }
+ list = list + BackupRoute;
+ return list;
+}
+var h_tbl = new Array(0,0x10D01913,0x21A03226,0x31702B35,0x4340644C,0x53907D5F,0x62E0566A,0x72304F79,0x8680C898,0x9650D18B,0xA720FABE,0xB7F0E3AD,0xC5C0ACD4,0xD510B5C7,0xE4609EF2,0xF4B087E1);
+function HashString(str, h){
+  for(var i=0; i<str.length; i++){
+   var c = str.charAt(i);
+   if(c ==':' || c == '/') break;
+   c = CharToAscii(c.toLowerCase());
+   h = (h >>> 4) ^ h_tbl[(h ^ c) & 15];
+   h = (h >>> 4) ^ h_tbl[(h ^ (c>>>4)) & 15];
+   h = MakeInt(h);
+ }
+ return h;
+}
+function Scramble(h){
+ h += ((h & 0xffff) * 0x1965) + ((((h >> 16) & 0xffff) * 0x1965) << 16) + (((h & 0xffff) * 0x6253) << 16);
+ h = MakeInt(h);
+ h += (((h & 0x7ff) << 21) | ((h >> 11) & 0x1fffff));
+ return MakeInt(h);
+}
+function CharToAscii(c){
+ return c.charCodeAt(0);
+}
+function MakeInt(x){
+ x %= 4294967296;
+ if(x < 0)
+  x += 4294967296;
+ return x;
+}
+function IsIPv6Addr(ip){
+ return (ip.indexOf(":") > -1);
+}

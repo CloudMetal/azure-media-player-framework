@@ -26,12 +26,10 @@ PLAYER_SEQUENCER.createCustomSequencerPlugin = function (customPlugin) {
     "use strict";
     
     // Replace the default pass-through methods
-    // NOTE: Any that are missed (or mis-spelled) will cause an exception when
-    //       the default pass-through uses its null 'nextSequencer' value.
     
     // This is a sample code to throw exception in manifestToSeekbarTime to test
-    // if the plugin is successfully created. Please remove this or remove this with real implementation
-    // if you want implement a custom sequencer plugin
+    // if the plugin is successfully created. Please remove this or replace this with real implementation
+    // if you want to implement a custom sequencer plugin
 //    customPlugin.manifestToSeekbarTime = function ( params ) {
 //        throw new PLAYER_SEQUENCER.SequencerError('If you see this the plugin is correctly added to the project');
 //    };

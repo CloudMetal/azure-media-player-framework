@@ -30,6 +30,7 @@
     double currentPlaybackRate;
     SequencerAVPlayerFramework *framework;
     PlaylistEntry *currentEntry;
+    NSTimeInterval currentSeekbarPosition;
     
     BOOL isPlaying;
     BOOL isPaused;

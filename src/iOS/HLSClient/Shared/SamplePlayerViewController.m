@@ -21,6 +21,9 @@
 #import <SeekbarTime.h>
 #import <Scheduler.h>
 
+#define SKIP_FORWARD_SECONDS 60
+#define SKIP_BACKWARD_SECONDS 60
+
 @implementation SamplePlayerViewController
 
 #pragma mark -
@@ -43,8 +46,15 @@
         NSError *error = framework.lastError;
         NSLog(@"Error with domain name:%@, description:%@ and reason:%@", error.domain, error.localizedDescription, error.localizedFailureReason);
     }
-    
-    [self onStopButtonPressed];
+
+    if (nil != currentEntry && currentEntry.isAdvertisement)
+    {
+        [framework skipCurrentPlaylistEntry];
+    }
+    else
+    {
+        [self onStopButtonPressed];
+    }
 }
 
 #pragma mark -
@@ -408,9 +418,7 @@
 {
     if (framework.player)
     {
-        CMTime currTime = framework.player.currentTime;
-        NSTimeInterval currentTime = (0 == currTime.timescale) ? 0 : (double)currTime.value / currTime.timescale;
-        NSTimeInterval newTime = (60 <= currentTime) ? (currentTime - 60) : 0;
+        NSTimeInterval newTime = (SKIP_BACKWARD_SECONDS <= currentSeekbarPosition) ? (currentSeekbarPosition - SKIP_BACKWARD_SECONDS) : 0;
         
         if(![framework seekToTime:newTime])
         {
@@ -433,9 +441,7 @@
 {
     if (framework.player)
     {
-        CMTime currTime = framework.player.currentTime;
-        NSTimeInterval currentTime = (0 == currTime.timescale) ? 0 : (double)currTime.value / currTime.timescale;
-        NSTimeInterval newTime = currentTime + 60;
+        NSTimeInterval newTime = currentSeekbarPosition + SKIP_FORWARD_SECONDS;
         
         if(![framework seekToTime:newTime])
         {
@@ -590,6 +596,8 @@
         [seekbarViewController setSliderValue:args.seekbarTime.currentSeekbarPosition];
     }
 
+    currentSeekbarPosition = args.seekbarTime.currentSeekbarPosition;
+    
     NSString *time = [NSString stringWithFormat:@"%@ / %@", 
                       [self stringFromNSTimeInterval:args.seekbarTime.currentSeekbarPosition],
                       [self stringFromNSTimeInterval:args.seekbarTime.maxSeekbarPosition]];
@@ -626,7 +634,15 @@
     NSDictionary *userInfo = [notification userInfo];
     NSError *error = (NSError *)[userInfo objectForKey:PlayerSequencerErrorArgsUserInfoKey];
     NSLog(@"Error with domain name:%@, description:%@ and reason:%@", error.domain, error.localizedDescription, error.localizedFailureReason);
-    [self onStopButtonPressed];
+    
+    if (nil != currentEntry && currentEntry.isAdvertisement)
+    {
+        [framework skipCurrentPlaylistEntry];
+    }
+    else
+    {
+        [self onStopButtonPressed];
+    }
 }
 
 //

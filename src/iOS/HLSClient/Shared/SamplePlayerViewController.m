@@ -7,11 +7,10 @@
 // You may obtain a copy of the License at
 // http://www.apache.org/licenses/LICENSE-2.0
 //
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+// THIS CODE IS PROVIDED *AS IS* BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+// INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE,
+// FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT.
 //
 
 #import "SamplePlayerViewController.h"
@@ -123,7 +122,7 @@
             [self logFrameworkError];
         }
         
-        NSString *secondContent=@"http://wamsblureg001orig-hs.cloudapp.net/76b0cfa7-87e1-43c7-bbcd-b46435751ca7/Argo%20Trailer%20(2012)-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
+        NSString *secondContent=@"http://wamsblureg001orig-hs.cloudapp.net/6651424c-a9d1-419b-895c-6993f0f48a26/The%20making%20of%20Microsoft%20Surface-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
         manifestTime.currentPlaybackPosition = 0;
         manifestTime.minManifestPosition = 0;
         manifestTime.maxManifestPosition = 80;

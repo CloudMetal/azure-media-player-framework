@@ -358,7 +358,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp Default-568h-2x.png Default-568h@2x.png";
+			shellScript = "if [ -f Default-568h-2x.png ]\nthen\n    cp Default-568h-2x.png Default-568h@2x.png\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

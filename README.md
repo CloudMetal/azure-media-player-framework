@@ -7,11 +7,11 @@ Feature List
 ============================
 Advertisement insertion
 
-Pre-roll, Mid-roll and Post-roll support
-Ad Pod
-Advertisement clip could be either Mp4 or Http Live Streaming
-Error Notification
-Play-once or Sticky Ad
+*Pre-roll, Mid-roll and Post-roll support
+*Ad Pod
+*Advertisement clip could be either Mp4 or Http Live Streaming
+*Error Notification
+*Play-once or Sticky Ad
 
 Performance
-Seamless transition from Advertisement to Main Content and between advertisements
+*Seamless transition from Advertisement to Main Content and between advertisements
